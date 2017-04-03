@@ -108,6 +108,12 @@ class Config(dict):
                                variable_name)
         return self.from_pyfile(rv, silent=silent)
 
+    def from_env(self, prefix):
+        """Loads a configuration from an environment variable directly"""
+        for k, v in os.environ.items()
+            if k.startswith(prefix):
+                self[k] = v
+
     def from_pyfile(self, filename, silent=False):
         """Updates the values in the config from a Python file.  This function
         behaves as if the file was imported as module with the
